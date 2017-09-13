@@ -1,0 +1,64 @@
+<html> 
+	<head><title>vue学习笔记</title></head>
+	<!--打印message-->	
+	<div id="app">
+		{{ message }}
+	</div>
+	<!--响应式-->
+	<div id="app-1">
+ 		<span v-bind:title="message">
+    		鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  		</span>
+	</div>
+	<!--v-if-->
+	<div id="app-2">
+		<span v-if="flag">能看到我了么</span>
+	</div>
+	<!--v-for-->
+	<div id="app-3">
+		<ol>
+			<li v-for="todo in todos">
+				{{todo.text}}:{{todo.val}}
+			</li>
+		</ol>
+	</div>
+
+
+
+
+
+	<script src="https://unpkg.com/vue"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    message: 'Hello Vue!'
+		  }
+		})
+		var app1 = new Vue({
+			el:'#app-1',
+			data:{
+				message:"页面加载于" + new Date().toLocaleString()
+			}
+		})
+
+		var app2 = new Vue({
+			el:"#app-2",
+			data:{
+				flag:false
+			}
+		})
+
+		var app3 = new Vue({
+			el:"#app-3",
+			data:{
+				todos:[{text:'sdf',val:'123'},{text:'wwww',val:'123'},{text:"vue test",val:'123'}]
+			}
+		})
+	</script>
+</html>
+
+
+
+
+
