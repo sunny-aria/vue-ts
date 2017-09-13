@@ -1,0 +1,38 @@
+<html>
+<head><title>vue组件</title></head>
+
+<body style="text-align: center;">
+	<div id="app">
+		<ul>
+		<!--v:bind:todo 绑定属性-->
+			<todo-item 
+			v-for="item in todos"
+			v-bind:todo="item" 
+			v-bind:key="item.id"
+			/>
+
+		<ul>
+	</div>
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+//定义一个小的组件， 我们已经设法将应用分割成了两个更小的单元，子单元通过 props 接口实现了与父单元很好的解耦。我们现在可以进一步为我们的 todo-item 组件实现更复杂的模板和逻辑的改进，而不会影响到父单元。
+Vue.component('todo-item', {
+	// "prop"，类似于一个自定义属性
+  // 这个属性名为 todo。
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
+})
+var vue =new Vue({
+	el:"#app",
+	data:{
+		todos:[
+		{text:'123',id:'123'},
+		{text:'456',id:'4546'},
+		{text:'789',id:'678'}
+		]
+	}
+})
+</script>
+</html>
