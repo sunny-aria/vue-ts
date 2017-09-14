@@ -1,0 +1,67 @@
+<head><title>v-model</title></head>
+<body align="center">
+ <div id="app-1">
+    <input v-model="text" placeholder="input your string">
+    <p>your String is:{{text}}</p>
+
+    <textarea v-model="text" placeholder="input your area string"></textarea>
+    <p style="white-space: pre-line">{{ text }}</p>
+
+    <input type="checkbox" v-model="checked"/><label>{{checked}}</label>
+
+    <div><!--多个checkbox绑定-->
+      <input type="checkbox" id="id1" value="id1" v-model="checkboxStr"/><label for="id1">id1</label>
+      <input type="checkbox" id="id2" value="id2" v-model="checkboxStr"/><label for="id2">id2</label>
+      <input type="checkbox" id="id3" value="id3" v-model="checkboxStr"/><label for="id3">id3</label>
+      <p>你选的checkbox:{{checkboxStr}}</p>
+    </div>
+
+     <div><!--radio绑定-->
+      <input type="radio" id="id4" value="id4" v-model="radioStr"/><label for="id4">id4</label>
+      <input type="radio" id="id5" value="id5" v-model="radioStr"/><label for="id5">id5</label>
+      <input type="radio" id="id6" value="id6" v-model="radioStr"/><label for="id6">id6</label>
+      <p>你选的radio:{{radioStr}}</p>
+    </div>
+
+    <div><!--select绑定-->
+        <select v-model="selectStr" multiple="multiple">
+          <option v-for="item in strs" :value="item.val">{{item.text}}</option>
+        </select>
+        <p>你选的select:{{selectStr}}</p>
+    </div>
+
+    <div>
+      <select v-model="selected">
+         <!-- 内联对象字面量 -->
+        <option v-bind:value="{ number: 123 }">123</option>
+      </select>
+      <p>你选的内联对象:{{selected.number}}</p>
+    </div>
+
+    <div><!-- .lazy .trim .number-->
+      <input v-model.lazy="lazyText"/><label>lazyText：{{lazyText}}</label><br/>
+      <input v-model.number="numberText" value='16' type="number" /><label>numberText：{{numberText}}</label><br/>
+      <input v-model.trim="trimText" value='16'/><label>trimText：{{trimText}}</label><br/>
+
+    </div>
+ </div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+var vue = new Vue({
+  el:"#app-1",
+  data:{
+    text:'vue.js',
+    lazyText:'',
+    numberText:'',
+    trimText:'',
+    checked:false,
+    checkboxStr:[],
+    radioStr:[],
+    selectStr:[],
+    selected:{},
+    strs:[{text:'1',val:1},{text:'2',val:2},{text:'3',val:3}]
+  } 
+   
+})
+</script>
