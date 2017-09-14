@@ -1,0 +1,38 @@
+<html>
+<head><title>vue计算属性，计算方法区别</title></head>
+
+<body style="text-align: center;">
+	<div id="app">
+		 <p>{{message}}</p>
+		 <p>计算属性，有缓存"{{reverseMsg}}</p>
+		 <p>测试compute 计算属性是否缓存{{now}}</p>
+		 <p>使用方法反转，此方法没有缓存"{{reverseMessage()}}</p>
+		 <input 
+	</div>
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+ 
+var vue =new Vue({
+	el:"#app",
+	data:{
+		 message:"sunny",
+	},
+	computed:{
+		reverseMsg:function(){
+			return this.message.split('').reverse().join('')
+		},
+		now:function(){
+			return Date.now()
+		}
+	},
+	methods:{
+		reverseMessage:function(){
+			return this.message.split('').reverse().join('')
+		}
+	}
+	
+})
+</script>
+</html>
