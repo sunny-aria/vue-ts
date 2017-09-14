@@ -1,0 +1,30 @@
+<html>
+<head><title>vue组件2</title></head>
+
+<body style="text-align: center;">
+	<div id="app">
+		 <child message="hello vue组件2 "></child> <!--message 这种方式直接放入字符串-->
+		 <child2 :msg1="msg"></child2> <!--绑定外部变量-->
+	</div>
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+ 
+Vue.component('child', {
+   props: ['message'],
+  template: '<p>组件直接赋值：{{message}}</p>'
+})
+
+Vue.component('child2', {
+   props: ['msg1'],
+  template: '<p>组件绑定外部变量：{{msg1}}</p>'
+})
+var vue =new Vue({
+	el:"#app",
+	data:{
+		msg:'sunny'
+	}
+})
+</script>
+</html>
