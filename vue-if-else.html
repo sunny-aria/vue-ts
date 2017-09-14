@@ -1,0 +1,30 @@
+<head><title>vue if</title></head>
+ 	<div id="app_vue_if">
+ 		<div>
+		 	<template v-if="loginType==='username'">
+		 		<label>Username</label>
+		  		<input placeholder="Enter your username" key="username-key"><!--用key管理重复的数据录入，vue进行了template的重用，当切换的时候可以将用户的输入切换到email上面，如果不需要，可以增加key管理起来，根据需要使用key-->
+		 	</template>
+		 	<template v-else>
+		 		<label>Email</label>
+		  		<input placeholder="Enter your email" key="email-key">
+		 	</template>
+ 		</div>
+ 		<button @click="toggleStyle">toggle切换</button>
+ 		<h1 v-show="ok">h1 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 是简单地切换元素的 CSS 属性 display 。</h1>
+	</div>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+ 	new Vue({
+ 		el:"#app_vue_if",
+ 		data:{
+ 			loginType:"username",
+ 			ok:false
+ 		},
+ 		methods:{
+ 			toggleStyle:function(){
+ 				this.loginType=this.loginType==='username'?'email':'username'
+ 			}
+ 		}
+ 	})
+</script>

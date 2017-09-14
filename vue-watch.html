@@ -1,0 +1,36 @@
+<head><title>vue watch</title></head>
+<div id="app">
+	<p>please input you name:
+		<input v-model="name"/>
+	</p>
+	<p v-bind:style="styleObject">{{reverseName}}</p>
+	<!--v-bind:style 计算属性最终得出的是具体的style样式-->
+	<!--v-bind:class 计算属性最终得出的是定义在css 中的class名称-->
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+var app = new Vue({
+	el:"#app",
+	data:{
+		name:'',
+		reverseName:"我要反转名字",
+		styleObject:{ //测试v-bind:style
+			color: 'red',
+    		fontSize: '13px'
+		}
+	},
+	watch:{ 
+		 name:function(newName){
+		 	this.reverseName='doing'
+		 	this.reverseMethod()	//可以监控form输入的变化而动态校验或者请求后端数据
+		 }
+	},
+	methods:
+	{
+		reverseMethod:function(){
+			this.reverseName=this.name.split('').reverse().join('')
+		}
+	}
+})
+ 
+</script>
