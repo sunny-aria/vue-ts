@@ -1,7 +1,7 @@
 <head><title>vue if</title></head>
  	<div id="app_vue_if">
  		<div>
-		 	<template v-if="loginType==='username'">
+		 	<template v-if="loginType==='username'"><!--template 就像一个块，可包含多个html标签-->
 		 		<label>Username</label>
 		  		<input placeholder="Enter your username" key="username-key"><!--用key管理重复的数据录入，vue进行了template的重用，当切换的时候可以将用户的输入切换到email上面，如果不需要，可以增加key管理起来，根据需要使用key-->
 		 	</template>

@@ -1,0 +1,24 @@
+<head><title>vue-on</title></head>
+ <div id="app-1">
+  <!--有时也需要在内联语句处理器中访问原生 DOM 事件。可以用特殊变量 $event 把它传入方法-->
+  <button @click="greet('zhaojianing',$event)">dianji</button>
+ </div>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+var vue = new Vue({
+  el:"#app-1",
+  data:{
+    text:'vue.js'
+  },
+  methods:{
+    greet:function(message,event){
+      alert( message+' is a pig.')
+      if(event){
+         // 现在我们可以访问原生事件对象
+        alert(event.target.tagName)
+      }
+    }
+  }
+})
+ 
+</script>
