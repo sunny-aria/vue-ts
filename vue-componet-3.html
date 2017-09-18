@@ -1,0 +1,39 @@
+<html>
+<head><title>vue组件 使用 v-on 绑定自定义事件</title></head>
+
+<body style="text-align: center;">
+	<div id="counter-event-example">
+	  <p>{{ total }}</p>
+	  <button-counter @increment="incrementTotal"></button-counter>
+	  <button-counter @increment="incrementTotal"></button-counter>
+	</div>
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+ Vue.component('button-counter',{
+ 	template:'<button @click="incrementCounter">{{ counter }}</button>',
+ 	data:function(){
+ 		return { counter:0} // 用function 返回一个counter，区分不同的组件的公用问题
+ 	},
+ 	methods:{
+		incrementCounter:function(){
+			this.counter+=1
+			this.$emit('increment')//触发increment 方法
+		}
+ 	}
+ })
+
+ new Vue({
+  el: '#counter-event-example',
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function () {
+      this.total += 1
+    }
+  }
+})
+</script>
+</html>

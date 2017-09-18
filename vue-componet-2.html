@@ -5,6 +5,7 @@
 	<div id="app">
 		 <child message="hello vue组件2 "></child> <!--message 这种方式直接放入字符串-->
 		 <child2 :msg1="msg"></child2> <!--绑定外部变量-->
+		 <child3 my-comp="myComp test"></child3> <!--驼峰转短线-->
 	</div>
 </body>
 
@@ -18,8 +19,16 @@ Vue.component('child', {
 
 Vue.component('child2', {
    props: ['msg1'],
-  template: '<p>组件绑定外部变量：{{msg1}}</p>'
+  template: '\
+  	<label>组件绑定外部变量：{{msg1}}</label>\
+  	'
 })
+
+Vue.component('child3', {
+   props: ['myComp'],
+  template: '<p>vue驼峰转短横线：{{myComp}}</p>'
+})
+
 var vue =new Vue({
 	el:"#app",
 	data:{
